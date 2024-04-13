@@ -253,6 +253,65 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
+
+
+
+import os
+from dotenv import load_dotenv
+
+# Загружаем переменные из файла .env
+load_dotenv()
+
+# Конфигурация для Celery
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+
+# Настройки электронной почты
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')  # Укажите свой SMTP-сервер
+EMAIL_PORT = os.getenv('EMAIL_PORT')  # Порт SMTP-сервера
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')  # Использовать TLS для безопасной передачи данных
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Адрес электронной почты отправителя
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Пароль от электронной почты отправителя
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# settings.py
+
+# # Добавьте конфигурацию для Celery
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+# # Настройки электронной почты
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.example.com'  # Укажите свой SMTP-сервер
+# EMAIL_PORT = 587  # Порт SMTP-сервера
+# EMAIL_USE_TLS = True  # Использовать TLS для безопасной передачи данных
+# EMAIL_HOST_USER = 'your_email@example.com'  # Адрес электронной почты отправителя
+# EMAIL_HOST_PASSWORD = 'your_email_password'  # Пароль от электронной почты отправителя
+
+
+
+
+
+
+
 # # Добавьте следующие настройки для настройки почтового сервера
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.example.com'

@@ -10,16 +10,46 @@ from django.utils.translation import gettext_lazy as _
 from .models import *
 from .serializers import *
 
-def register_user(data):
-    """
-    Регистрирует нового пользователя.
+# def register_user(data):
+#     """
+#     Регистрирует нового пользователя.
 
-    Args:
-        data (dict): Словарь с данными нового пользователя.
+#     Args:
+#         data (dict): Словарь с данными нового пользователя.
 
-    Returns:
-        dict: Результат операции регистрации пользователя.
-    """
+#     Returns:
+#         dict: Результат операции регистрации пользователя.    
+        
+#     """
+    
+    
+from django.contrib.auth import get_user_model
+from .tasks import send_email_task
+
+User = get_user_model()
+
+def register_user(request):
+    if request.method == 'POST':
+        # Обработка данных формы регистрации
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        
+        # Создание пользователя
+        user = User.objects.create_user(username=username, email=email, password=password)
+
+        # Отправка письма для подтверждения регистрации
+        subject = 'Подтверждение регистрации'
+        message = 'Спасибо за регистрацию!'
+        recipient_list = [email]
+        send_email_task.delay(subject, message, recipient_list)
+        
+        # Вернуть какой-то ответ или перенаправить пользователя
+
+    
+    
+    
+    
     # Инициализация сериализатора для регистрации пользователя
     serializer = UserRegistrationSerializer(data=data)
     if serializer.is_valid():
