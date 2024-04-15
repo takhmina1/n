@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser, Group, Permission
 
 
+
 class User(AbstractUser):
     """Пользователь"""
 
@@ -19,7 +20,7 @@ class User(AbstractUser):
 
     username = models.EmailField(verbose_name='Логин', max_length=255, unique=True)
     middle_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True, null=True)
-    type_ = models.CharField(verbose_name='Тип аккаунта', choices=TYPE, max_length=20, default=USER)
+    type = models.CharField(verbose_name='Тип аккаунта', choices=TYPE, max_length=20, default=USER)
     phone = models.CharField(
         verbose_name='Телефон',
         max_length=19,
