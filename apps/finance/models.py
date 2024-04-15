@@ -80,7 +80,7 @@ class Application(models.Model):
         default=0,
         validators=[MinValueValidator(0)],
     )
-    type_ = models.CharField(verbose_name='Тип платежа', choices=Transaction.TRANSACTION_TYPES, max_length=20)
+    type = models.CharField(verbose_name='Тип платежа', choices=Transaction.TRANSACTION_TYPES, max_length=20)
     status = models.CharField(verbose_name='Статус', max_length=20)
 
     def __str__(self):
