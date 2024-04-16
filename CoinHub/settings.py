@@ -73,12 +73,33 @@ REST_FRAMEWORK = {
 
 WSGI_APPLICATION = 'CoinHub.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+
+
+
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -112,7 +133,7 @@ CORS_ALLOWED_ORIGINS = [
 
 # ALLOWED_HOSTS = ['localhost', 'takhmina1234takhmina1234.pythonanywhere.com']
 
-import os
+# import os
 from dotenv import load_dotenv
 
 # Загружаем переменные из файла .env
