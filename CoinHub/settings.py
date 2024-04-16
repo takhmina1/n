@@ -5,7 +5,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
+
+# # ALLOWED_HOSTS = ["http://127.0.0.1", "https://takhmina1234takhmina1234.pythonanywhere.com"]
+# ALLOWED_HOSTS = ['127.0.0.1','localhost','http://127.0.0.1:8000/']
+
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ["*"]
+
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'takhmina1234takhmina1234.pythonanywhere.com']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'takhmina1234takhmina1234.pythonanywhere.com']
+
+
+
+
+
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -96,7 +110,7 @@ CORS_ALLOWED_ORIGINS = [
     "*",  
 ]
 
-ALLOWED_HOSTS = ['localhost', 'takhmina1234takhmina1234.pythonanywhere.com']
+# ALLOWED_HOSTS = ['localhost', 'takhmina1234takhmina1234.pythonanywhere.com']
 
 import os
 from dotenv import load_dotenv
